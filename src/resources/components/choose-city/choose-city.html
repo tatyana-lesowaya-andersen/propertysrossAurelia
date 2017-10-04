@@ -1,0 +1,56 @@
+<template>
+  <require from="../details/details"></require>
+<form class="enter-city center" submit.delegate = "enterCity.search(city)">
+  <label>Enter the city:<br>
+    <input type="text" placeholder="${countries[enterCity.activeCountry].capital}" value.bind = "city">
+    <i class="fa fa-1x fa-search" aria-hidden="true" click.delegate = "enterCity.search(city)"></i>
+  </label>
+  <i class="fa fa-star i-favorite" aria-hidden="true" click.delegate ="goToFavorities()"></i>
+</form>
+
+<!--<datalist id="cities-list">-->
+  <!--<option ng-repeat ="option in $ctrl.enterCity.citiesList"-->
+          <!--value="{{option.structured_formatting.main_text}}"></option>-->
+<!--</datalist>-->
+<div class="results center">
+  <div>
+    <div class="item sorry-item" if.bind="enterCity.resultsNumber == 0  && !favorites.isFavoritesActive">
+      Sorry, we can't find information for this place
+    </div>
+    <div repeat.for="item of enterCity.flats" if.bind="!favorites.isFavoritesActive">
+      <a href="/#details" class="link-modal" click.delegate="enterCity.saveAsActive(item)">
+        <div class="item">
+          <h1>${item.title}</h1>
+          <img src.bind='item.img_url'>
+          <div>
+            <p>Rooms: ${item.bedroom_number}</p>
+            <p>Price: ${item.price_formatted}</p>
+            <p>Type: ${item.property_type} </p>
+          </div>
+          ${favorites.checkContains(item)}
+          <i class="fa fa-2x fa-star ${favorites.urlArr.indexOf(item.img_url)!==-1 ? 'i-color' : ''}"
+             aria-hidden="true" click.delegate="favorites.changeFavoriteStatus(item, $index)"></i>
+        </div>
+      </a>
+    </div>
+    <div repeat.for="item of favorites.favoriteItems" if.bind="favorites.isFavoritesActive">
+      <a href="/#details" class="link-modal" click.delegate="enterCity.saveAsActive(item)">
+        <div class="item">
+          <h1>${item.title}</h1>
+          <img src.bind='item.img_url'>
+          <div>
+            <p>Rooms: ${item.bedroom_number}</p>
+            <p>Price: ${item.price_formatted}</p>
+            <p>Type: ${item.property_type} </p>
+          </div>
+          ${favorites.checkContains(item)}
+          <i class="fa fa-2x fa-star ${favorites.urlArr.indexOf(item.img_url)!==-1 ? 'i-color' : ''}"
+             aria-hidden="true" click.delegate="favorites.changeFavoriteStatus(item, $index)"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <ul id="pagination-demo" class="pagination-sm"></ul>
+</div>
+</template>

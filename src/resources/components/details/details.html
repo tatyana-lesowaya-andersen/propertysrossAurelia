@@ -1,0 +1,27 @@
+<template>
+  <div class="center change">
+    <br>
+    <h1 class="modal-h1">${enterCity.active.title}</h1>
+    <br>
+    <p>Rooms: ${enterCity.active.room_number}
+    </p>
+    <p>Type: ${enterCity.active.listing_type}
+    </p>
+    <p>Price: ${enterCity.active.price_formatted}
+    </p>
+    <p>Price type: ${enterCity.active.price_type}
+    </p>
+    <p>Bedrooms: ${enterCity.active.bedroom_number}
+    </p>
+    <p>Bathrooms: ${enterCity.active.bathroom_number}
+    </p>
+    <p>Car spaces: ${enterCity.active.car_spaces}
+    </p>
+    <p>Update: ${enterCity.active.updated_in_days_formatted}
+    </p>
+    <div class="set-change-size">
+      <i class="fa fa-3x fa-check" aria-hidden="true" click.delegate="goBack()"></i>
+    </div>
+  </div>
+</template>
+

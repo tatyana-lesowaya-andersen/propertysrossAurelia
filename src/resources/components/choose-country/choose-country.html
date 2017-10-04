@@ -1,0 +1,6 @@
+<template>
+  <div repeat.for="country of list"
+       class="${$index === enterCity.activeCountry ? 'active-country' : ''}"
+       click.delegate="changeActive($index)">${country.text}
+  </div>
+</template>
