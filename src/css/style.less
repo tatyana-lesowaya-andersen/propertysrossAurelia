@@ -1,12 +1,13 @@
-@bg: rgba(171, 171, 171, 0.7);
+@bg: white;
 @text: rgb(75, 71, 67);
 @text-blue: #58adad;
 @dark-grey: rgba(61, 59, 59, 0.64);
 @i-color: #e4ce27;
-@text-light: #e6e6e6;
+@text-light: white;
 
 body {
   overflow: hidden;
+  font-family: Arial;
   margin: 0;
   padding: 0;
   background-image: url("../img/bg.jpg");
@@ -35,22 +36,21 @@ a {
 
 .enter-city {
   background-color: @bg;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 30vw;
   margin-top: 2vh;
   font-size: 28px;
   color: @text;
   padding-bottom: 15px;
-}
-
-.enter-city input {
-  transition: border-color ease-in-out 300ms, box-shadow ease-in-out 300ms;
-  outline: none;
-  margin-top: 5px;
-  padding: 5px;
-  border-radius: 8px;
-  font-size: 18px;
-  width: 20vw;
+  input {
+    transition: border-color ease-in-out 300ms, box-shadow ease-in-out 300ms;
+    outline: none;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 20vw;
+  }
 }
 
 .fa-search {
@@ -61,19 +61,17 @@ a {
 }
 
 .choose-country {
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 10px 10px;
   width: 100vw;
   display: block;
   font-size: 18px;
   .set-color();
-}
-
-.choose-country div {
-  cursor: pointer;
-  display: inline-block;
-  width: 11vw;
-  padding: 15px 0;
-
+  div {
+    cursor: pointer;
+    display: inline-block;
+    width: 11vw;
+    padding: 15px 0;
+  }
 }
 
 .active-country {
@@ -85,15 +83,13 @@ a {
   position: relative;
   margin-top: 5vh;
   display: block;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 70vh;
   width: 60vw;
   .set-color(@text-blue);
 }
 
 .item {
-  //display: none;
-  //opacity: 0;
   position: relative;
   float: left;
   text-align: left;
@@ -101,53 +97,44 @@ a {
   background-color: @dark-grey;
   height: 28vh;
   border-radius: 10px;
-  //top: 5vh;
   margin: 2vh 1vw;
   margin-bottom: 0;
-}
-
-datalist {
+  img {
+    display: inline-block;
+    width: 9vw;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 9vw;
+  }
+  div {
+    display: inline-block;
+    color: @text-light;
+    font-size: 18px;
+    vertical-align: top;
+  }
+  h1 {
+    padding: 0px 5px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: @text-blue;
+    padding-left: 15px;
+    text-align: left;
+    font-size: 22px;
+  }
+  p {
+    margin: 10px;
+  }
+  i {
+    position: absolute;
+    bottom: 3vh;
+    right: 1vw;
+    float: right;
+    cursor: pointer;
+  }
 }
 
 .item-display {
   display: inline-block;
-}
-
-.item img {
-  display: inline-block;
-  width: 9vw;
-  margin-left: 15px;
-  margin-right: 15px;
-  height: 9vw;
-}
-
-.item div {
-  display: inline-block;
-  color: @text-light;
-  font-size: 18px;
-  vertical-align: top;
-}
-
-.item h1 {
-  padding: 0px 5px;
-  font-weight: normal;
-  margin-bottom: 10px;
-  color: @text-blue;
-  padding-left: 15px;
-  text-align: left;
-  font-size: 22px;
-}
-
-.item p {
-  margin: 10px;
-}
-
-.item i {
-  position: absolute;
-  bottom: 3vh;
-  right: 1vw;
-  float: right;
-  cursor: pointer;
 }
 
 .sorry-item {
@@ -173,18 +160,24 @@ datalist {
   cursor: pointer;
 }
 
-.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span,
-.pagination > .active > span:focus, .pagination > .active > span:hover {
-  z-index: 3;
-  color: @text-light;
-  cursor: default;
-  background-color: @dark-grey;
-  border-color: @dark-grey;
+.active {
+  a, a:focus, a:hover, span, span:focus, span:hover {
+    z-index: 3;
+    color: @text-light;
+    cursor: default;
+    background-color: @dark-grey;
+    border-color: @dark-grey;
+  }
+}
+
+.page-link{
+  background-color: @text-light;
 }
 
 .pagination-sm > li > a, .pagination-sm > li > span {
   padding: 5px 10px;
   font-size: 18px;
+  background-color: @text-light;
   line-height: 1.5;
 }
 
@@ -221,7 +214,7 @@ datalist {
   width: 50vw;
   height: 75vh;
   background: rgb(105, 105, 105);
-  border-radius: 20px;
+  border-radius: 10px;
   position: fixed;
   top: 7vh;
   left: 25vw;
@@ -379,7 +372,7 @@ datalist {
   top: 48vh;
   left: 31vw;
   font-size: 24px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .parameters form {
@@ -401,7 +394,7 @@ datalist {
   background-color: @bg;
   color: @text-light;
   width: 17vw;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 10px 10px 0;
   padding-top: 1vh;
   height: 70vh;
 }
@@ -451,9 +444,18 @@ hr {
   background-color: @bg;
   color: @text-light;
   width: 17vw;
-  border-radius: 20px 0 0 20px;
+  border-radius: 10px 0 0 10px;
   padding-top: 1vh;
   height: 70vh;
+  input {
+    float: right;
+  }
+  label {
+    font-size: 3vh;
+    text-align: left;
+    display: block;
+    padding: 2vh 1vw;
+  }
 }
 
 .arrow-sort {
@@ -473,17 +475,6 @@ hr {
   color: @text-blue;
 }
 
-.sort-container input {
-  float: right;
-}
-
-.sort-container label {
-  font-size: 3vh;
-  text-align: left;
-  display: block;
-  padding: 2vh 1vw;
-}
-
 .error {
   border-color: #EE3128;
   box-shadow: 0 0 15px #EE3128;
@@ -498,7 +489,7 @@ hr {
   background-color: @bg;
   color: @text;
   display: block;
-  border-radius: 15px;
+  border-radius: 10px;
   font-size: 24px;
 }
 
@@ -507,14 +498,12 @@ hr {
   display: inline-block;
   list-style-type: none;
   cursor: pointer;
-}
-
-.choose-lang li:first-child {
-  border-radius: 15px 0 0 15px;
-}
-
-.choose-lang li:last-child {
-  border-radius: 0 15px 15px 0;
+  :first-child {
+    border-radius: 10px 0 0 10px;
+  }
+  :last-child {
+    border-radius: 0 10px 10px 0;
+  }
 }
 
 .active-lang {
@@ -522,32 +511,3 @@ hr {
   color: @text-blue;
 }
 
-.change {
-  font-size: 3vh;
-  position: relative;
-  margin-top: 10vh;
-  display: block;
-  border-radius: 20px;
-  height: 85vh;
-  width: 60vw;
-  .set-color(@text);
-}
-
-.change p{
-  margin-left: 10%;
-}
-
-.change input{
-  float: right;
-  margin-right: 10%;
-}
-
-.change i{
-  cursor: pointer;
-  color: #e6e6e6;
-}
-
-.set-change-size{
-  width: 100%;
-  text-align: center;
-}

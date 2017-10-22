@@ -142,7 +142,7 @@ a {
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
   z-index: 3;
-  color: #e6e6e6;
+  color: white;
   cursor: default;
   background-color: rgba(61, 59, 59, 0.64);
   border-color: rgba(61, 59, 59, 0.64);
@@ -162,7 +162,7 @@ a {
   line-height: 1.42857143;
   color: rgba(61, 59, 59, 0.64);
   text-decoration: none;
-  background-color: #e6e6e6;
+  background-color: white;
   border: 1px solid rgba(61, 59, 59, 0.64);
 }
 .pagination {

@@ -1,18 +1,16 @@
 import {inject} from 'aurelia-framework';
-import {EnterCity} from '../../services/enterCity/enterCity';
+import {enterCity} from '../../services/enterCity/enterCity';
 import {countries} from '../../services/enterCity/countries.const';
-import {Favorites} from '../../services/enterCity/favorites';
+import {favorites} from '../../services/enterCity/favorites';
 
-@inject(EnterCity, Favorites, countries)
+@inject(enterCity, favorites, countries)
 export class ChooseCountry {
-  // list = enterCity.countries;
-  list = countries;
-  enterCity;
-  favorites;
+  public list = countries;
+  public enterCity: enterCity;
+  public favorites: favorites;
 
-  constructor(EnterCity, Favorites) {
-    this.enterCity = EnterCity;
-    this.favorites = Favorites;
+  constructor(enterCity, favorites) {
+    Object.assign(this, {enterCity, favorites})
   }
 
   changeActive(index) {

@@ -48,3 +48,5 @@ export const countries = [
     api: 'http://api.nestoria.co.uk/api?encoding=json&action=search_listings&number_of_results=4&place_name='
   }
 ];
+export const flatsPerPage = 4;
+export const titleLength = 35;

@@ -7,11 +7,6 @@
   </label>
   <i class="fa fa-star i-favorite" aria-hidden="true" click.delegate ="goToFavorities()"></i>
 </form>
-
-<!--<datalist id="cities-list">-->
-  <!--<option ng-repeat ="option in $ctrl.enterCity.citiesList"-->
-          <!--value="{{option.structured_formatting.main_text}}"></option>-->
-<!--</datalist>-->
 <div class="results center">
   <div>
     <div class="item sorry-item" if.bind="enterCity.resultsNumber == 0  && !favorites.isFavoritesActive">
@@ -24,7 +19,7 @@
           <img src.bind='item.img_url'>
           <div>
             <p>Rooms: ${item.bedroom_number}</p>
-            <p>Price: ${item.price_formatted}</p>
+            <p>Price:  ${item.price}${item.price_currency}</p>
             <p>Type: ${item.property_type} </p>
           </div>
           ${favorites.checkContains(item)}
@@ -40,7 +35,7 @@
           <img src.bind='item.img_url'>
           <div>
             <p>Rooms: ${item.bedroom_number}</p>
-            <p>Price: ${item.price_formatted}</p>
+            <p>Price: ${item.price}${item.price_currency}</p>
             <p>Type: ${item.property_type} </p>
           </div>
           ${favorites.checkContains(item)}

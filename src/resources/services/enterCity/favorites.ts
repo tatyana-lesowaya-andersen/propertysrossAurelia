@@ -1,14 +1,14 @@
 import {inject} from 'aurelia-framework';
 import * as $ from 'jquery';
+import {flatsPerPage, titleLength} from '../../services/enterCity/countries.const';
 
 
 @inject()
-export class Favorites {
-  favoriteItems = [];
-  flats;
-  urlArr = [];
-  isFavoritesActive = true;
-  dirtyChecker;
+export class favorites {
+  public favoriteItems: any[] = [];
+  public flats: any[];
+  public urlArr: string[] = [];
+  public isFavoritesActive: boolean = true;
 
   constructor() {
   }
@@ -17,11 +17,11 @@ export class Favorites {
     const str = window.localStorage.getItem('favoriteItems');
     if (str) {
       this.flats = JSON.parse(str) || [];
-      this.favoriteItems = this.flats.slice(0, 4);
-      this.urlArr = this.flats.map((flat) => flat.img_url);
-      if (this.flats.length > 4) {
+      this.favoriteItems = this.flats.slice(0, flatsPerPage);
+      this.urlArr = this.flats.map(({ img_url }) => img_url);
+      if (this.flats.length > flatsPerPage) {
         this.paginationDestroy();
-        if (Math.ceil(this.flats.length / 4) > 1) {
+        if (Math.ceil(this.flats.length / flatsPerPage) > 1) {
           this.paginationInit();
         }
       }
@@ -32,9 +32,9 @@ export class Favorites {
     this.isFavoritesActive = true;
   }
 
-  addFavorite(newObj) {
-    this.flats.push(newObj);
-    this.urlArr.push(newObj.img_url);
+  addFavorite(newFavoriteFlat) {
+    this.flats.push(newFavoriteFlat);
+    this.urlArr.push(newFavoriteFlat.img_url);
 
     this.saveFavorite();
   }
@@ -52,8 +52,8 @@ export class Favorites {
     }
   }
 
-  get(page) {
-    return this.flats.slice(page * 4 - 4, page * 4);
+  getPage(page) {
+    return this.flats.slice(page * flatsPerPage - flatsPerPage, page * flatsPerPage);
   }
 
   changeFavoriteStatus(flat, index) {
@@ -68,7 +68,7 @@ export class Favorites {
   }
 
   paginationInit() {
-    const pages = Math.ceil(this.flats.length / 4);
+    const pages = Math.ceil(this.flats.length / flatsPerPage);
     $('#pagination-demo').twbsPagination({
       totalPages: pages,
       startPage: 1,
@@ -85,10 +85,10 @@ export class Favorites {
   }
 
   loadMoreFavorite(event, page) {
-    this.favoriteItems = this.get(page);
-    this.favoriteItems.forEach(function (flat) {
-      flat.title_short = flat.title.length > 35 ?
-        flat.title.slice(0, 35).toLowerCase() + "..." : flat.title.toLowerCase();
+    this.favoriteItems = this.getPage(page);
+    this.favoriteItems.forEach(flat => {
+      const {title, title_short} = flat;
+      flat.title_short = title.length > titleLength ? `${title.slice(0, titleLength).toLowerCase()}...` : title.toLowerCase();
     });
   }
 
