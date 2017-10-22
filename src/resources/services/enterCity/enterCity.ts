@@ -19,7 +19,7 @@ export class enterCity {
   public element: Element;
 
   constructor(countries) {
-    Object.assign(this, {countries})
+    this.countries = countries;
   }
 
   search(city) {
